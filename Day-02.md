@@ -17,6 +17,13 @@ docker pull alpine
 docker images
 ```
 
+| Image | Disk-usage | Content Size |
+|-------|------------|--------------|
+| alpine   | 13.1MB |  3.95MB |
+| nginx    | 240MB  |  65.8MB |
+| Ubuntu   | 119MB  | 31.7MB  |
+
+
 
 **3. What is the Docker architecture? (daemon, client, images, containers, registry)**
 
