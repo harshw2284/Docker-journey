@@ -27,16 +27,22 @@ docker images
 
 **3. Compare ubuntu vs alpine — why is one much smaller?**
 
-* Alpine Linux
+* Alpine Linux :
 Minimal OS (only essentials)
+
 Uses musl libc instead of glibc
+
 No extra tools/packages
+
 Designed for containers
 
-* Ubuntu
+* Ubuntu :
 Full-featured OS
+
 Includes many libraries & tools
+
 Uses glibc
+
 Bigger but more compatible
 
 
