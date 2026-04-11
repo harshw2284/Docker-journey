@@ -46,7 +46,7 @@ Uses glibc
 Bigger but more compatible
 
 
-**4. Inspect an image — what information can you see?**
+**4. Inspect an image ?**
 
 ```bash
 docker inspect <container-name>
