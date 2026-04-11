@@ -63,13 +63,13 @@ docker rmi <image-id>
 
 ### ✅ Task 2: Image Layers
 
-**1.To Inspect the creation history of the image, showing exactly how it was built layer-by-layer**
+**1 .To Inspect the creation history of the image, showing exactly how it was built layer-by-layer**
 
 ```bash
 docker image history nginx
 ```
 
-**2.What are layers and why does Docker use them ?**
+**2. What are layers and why does Docker use them ?**
 
 * Docker images are built as a stack of read-only layers.
 Each layer represents a change (like installing packages, copying files, or setting configs).
