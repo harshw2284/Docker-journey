@@ -25,7 +25,7 @@ docker images
 | nginx    | 240MB  |  65.8MB |
 | Ubuntu   | 119MB  | 31.7MB  |
 
-**3. Compare ubuntu vs alpine — why is one much smaller?**
+**3. Compare ubuntu vs alpine — why is one much smallerv?**
 
 * Alpine Linux :
 Minimal OS (only essentials)
@@ -46,7 +46,7 @@ Uses glibc
 Bigger but more compatible
 
 
-**4. Inspect an image ?**
+**4. Inspect an image **
 
 ```bash
 docker inspect <container-name>
