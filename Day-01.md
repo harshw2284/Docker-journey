@@ -54,98 +54,133 @@ You can also push your own
 
 **Use: To check git version on your local**
 
+---
 
-**2. Set up your Git identity — name and email**
+### ✅ Task 2: Install Docker
+
+**1. Installing on Linux**
 
 ```bash
-git config --global user.name "Your Name"
-git config --global user.email "your_email@example.com"
+sudo apt update
+sudo apt install docker.io -y
 ```
 
-**3. Verify your configuration**
+**2. Verify the installation**
+
+* check version
 
 ```bash
-git config --global user.name 
-git config --global user.email 
+docker --version
+```
+
+* start docker
+  
+```bash
+sudo systemctl start docker
+```
+
+  
+
+**3. Run Hello World Container**
+
+```bash
+docker run hello-world
 ```
 
 ---
 
-### ✅ Task 2: Creating our Git Project
+### ✅ Task 3: Run Real Containers
 
-**Initialize Folder as a Git repository**
-
-```bash
-git init
-```
-
-**Check the status**
+**1. Run an Nginx container and access it in your browser**
 
 ```bash
-git status
+docker run -d -p 80:80 nginx
 ```
-**Use: Shows the current state of the repository — which files are modified, staged, or untracked, and what is ready to commit.**
+
+* check (open browser):
+
+```bash
+http://localhost:8080
+```
+
+**2. Run Ubuntu in Interactive Mode**
+
+```bash
+docker run -it ubuntu
+```
+
+**3. List all running containers**
+
+```bash
+docker ps
+```
+
+* List All Containers (Including Stopped):
+
+```bash
+docker ps -a
+```
+
+**5. Stop a Container**
+
+```bash
+docker stop <container_id>
+```
+
+* Remove a Container :
+
+```bash
+docker rm <container_id>
+```
 
 ---
 
-### ✅ Task 3: Stage and Commit
+### ✅ Task 4 : Explore
 
-**Staging the file**
+**1. Run a Container in Detached Mode**
 
 ```bash
-git add <file-name>
+docker run -d nginx
 ```
 
-**Commit the file**
+* Difference :
+
+`-d` (detached mode) → runs container in background
+
+Your terminal is free immediately 
+
+You don’t see logs/output directly
+
+**2. Give a Container a Custom Name**
 
 ```bash
-git commit -m "<message>"
+docker run -d --name mynginx nginx
 ```
 
-**Show commit history**
+**3. Map a port from the container to your host**
 
 ```bash
-git log
-git log --oneline
+docker run -d -p 8080:80 --name web nginx
+```
+
+**4. Check Logs of a Running Container**
+
+```bash
+docker logs <container-name> or <cont-id>
+```
+
+**5. Run a Command Inside a Running Container**
+
+```bash
+docker exec -it <container-name> bash
+```
+
+* Exit :
+
+```bash
+exit
 ```
 
 ---
 
-## 💡 Key Learnings
 
-*  ".git/" : it stores all the information Git needs to track your project.
-It contains :
-
-Commits history (all versions of your project)
-Branches & HEAD (current branch info)
-Staging area (index)
-Configuration settings
-
-* If you delete the .git folder, your project will no longer be a Git repository.
-
-* git add vs git commit
-
-    git add : Moves changes to the staging area (prepares files for commit)
-
-    git commit : Saves the staged changes permanently in Git history
-
-* Working Directory vs Staging Area vs Repository
-
-    Working Directory : Where you write and modify your files
-
-    Staging Area (Index) : Where you prepare files using git add before committing
-
-    Repository : Where all committed changes are permanently stored
-
-* Staging Area (Why it exists)
-    The staging area lets you select and organize changes before committing.
-
-    👉 What it does:
-    Allows you to choose specific files or parts of changes
-    Helps create clean and meaningful commits
-
-    👉 Why not commit directly?
-    Without staging, all changes would be committed at once
-    No control over what goes into a commit
-
----
