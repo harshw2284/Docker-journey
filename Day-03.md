@@ -62,55 +62,78 @@ CMD [ "pyhton" , "app.py" ]
   
 ---
 
-### ✅ Task 3: Container Lifecycle
+### ✅ Task 3:  CMD vs ENTRYPOINT
 
-**1. Create a container (without starting it)**
-
-```bash
-docker create --name <any-name> <container-name>
-```
-
-**2. Start the Container**
+**1. Creating a image with  `CMD ["echo", "hello"]`**
 
 ```bash
-docker start <container-name>
+FROM ubuntu
+
+CMD ["echo", "hello"]
 ```
 
-**3. Pause the Container**
+**After building image and running it**
+* Output :
 
 ```bash
-docker pause <container-name>
+hello
 ```
 
-**4. Unpause the Container**
+**Running with custom command :**
 
 ```bash
-docker unpause <container-name>
+docker run cmd-test echo "hi"
 ```
 
-**5. Stop the Container**
+* Output :
 
 ```bash
-docker stop mycontainer
+hi
 ```
 
-**6. Restart the Container**
+**2.  Creating a image with  `ENTRYPOINT ["echo"]`**
 
 ```bash
-docker restart mycontainer
+FROM ubuntu
+
+ENTRYPOINT ["echo"]
 ```
 
-**7. Kill the Container**
+**After building image and running it**
+* Output :
 
 ```bash
-docker kill mycontainer
+(None)
 ```
 
-**8. Remove the Container**
+**Running with custom command :**
 
 ```bash
-docker rm mycontainer
+docker run cmd-test hi
 ```
+
+* Output :
+
+```bash
+hi
+```
+
+**When would we use CMD vs ENTRYPOINT ?**
+
+**CMD :**
+
+* Use `CMD` when you want your container to run a default command, but you expect that whoever runs the container might want to run something entirely different.
+* Use `CMD` if your container is a general-purpose tool and the user might want to run various commands inside it.
+
+**ENTRYPOINT :**
+
+* Use `ENTRYPOINT` when your container is built to do one specific job, and it should essentially act exactly like that specific program.
+* Use `ENTRYPOINT` if your container is designed to be a single-purpose application (like a database, a web server, or a specific script)
+
+
+
+
+
 
 ---
 
