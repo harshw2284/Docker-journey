@@ -33,7 +33,7 @@ docker run -itd ubuntu
 
 ---
 
-### ✅ Task 2: Dockerfile Instructions
+### ✅ Task 2 : Dockerfile Instructions
 
 **Create a new Dockerfile that uses all of these instructions:**
 
@@ -62,7 +62,7 @@ CMD [ "pyhton" , "app.py" ]
   
 ---
 
-### ✅ Task 3:  CMD vs ENTRYPOINT
+### ✅ Task 3 : CMD vs ENTRYPOINT
 
 **1. Creating a image with  `CMD ["echo", "hello"]`**
 
@@ -162,37 +162,14 @@ docker run -d -p 80:80 my-website:v1
 
 ---
 
-### ✅ Task 5 : Cleanup
+### ✅ Task 5 : .dockerignore
 
-**1. Stop ALL Running Containers**
+**A `.dockerignore` file is a configuration file that tells the Docker CLI which files and directories to exclude from the build context—the set of files sent from your local machine to the Docker daemon during the docker build command**
 
-```bash
-docker stop $(docker ps -q)
-```
-
-**2. Remove ALL Stopped Containers**
-
-```bash
-docker container prune
-```
-
-**3. Remove Unused Images**
-
-```bash
-docker image prune
-```
-
-**4. For full cleanup**
-
-```bash
-docker system prune -a
-```
-
-**5. Check how much disk space Docker is using**
-
-```bash
-docker system df
-```
+* `node_modules` : Ignores the entire node_modules folder ,includes all installed packages inside it
+* `.git` : Ignores the Git repository folder
+* `*.md` : Ignores all Markdown files anywhere
+* `.env` : Ignores the .env file, important for security (contains secrets like API keys, DB passwords)
 
 ---
 
