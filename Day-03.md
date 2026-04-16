@@ -33,30 +33,32 @@ docker run -itd ubuntu
 
 ---
 
-### ✅ Task 2: Image Layers
+### ✅ Task 2: Dockerfile Instructions
 
-**1 .To Inspect the creation history of the image, showing exactly how it was built layer-by-layer**
+**Create a new Dockerfile that uses all of these instructions:**
+
+* `FROM` — base image
+* `RUN` — execute commands during build
+* `COPY` — copy files from host to image
+* `WORKDIR` — set working directory
+* `EXPOSE` — document the port
+* `CMD` — sets the default command that will execute when a container starts
+
+**Dockerfile :**
 
 ```bash
-docker image history nginx
+FROM python:3.14
+
+WORKDIR /app
+
+COPY requirement.txt .
+
+RUN pip install requirements.txt
+
+EXPOSE 80
+
+CMD [ "pyhton" , "app.py" ]
 ```
-
-**2. What are layers and why does Docker use them ?**
-
-* Docker images are built as a stack of read-only layers.
-Each layer represents a change (like installing packages, copying files, or setting configs).
-These layers are combined to form the final image.
-
-
-* Why Docker Uses Layers :
-
-Efficiency (Storage Saving)
-
-Faster Builds
-
-Faster Downloads
-
-Version Control
   
 ---
 
