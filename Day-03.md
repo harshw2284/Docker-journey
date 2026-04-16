@@ -130,49 +130,34 @@ hi
 * Use `ENTRYPOINT` when your container is built to do one specific job, and it should essentially act exactly like that specific program.
 * Use `ENTRYPOINT` if your container is designed to be a single-purpose application (like a database, a web server, or a specific script)
 
-
-
-
-
-
 ---
 
-### ✅ Task 4 : Working with Running Containers
+### ✅ Task 4 : Build a Simple Web App Image
 
-**1. Run an Nginx container in detached mode**
+**1. First I created a simple HTML file named "index.html"**
+
+**2. Now let's write a dockerfile for it :**
 
 ```bash
-docker run -d -p 80:80 nginx
+FROM nginx:alpine
+
+COPY index.html /usr/share/nginx/html/
+
+EXPOSE 80
 ```
 
-**2. View logs**
+**NOTE : Nginx serves files from `/usr/share/nginx/html/`**
+
+**3. Building the image and tagging it `my-website:v1`**
 
 ```bash
-docker logs <container-name>
+docker build -t my-website:v1 .
 ```
 
-**3. Real-Time Logs (Follow Mode)**
+**4. Running the Container :**
 
 ```bash
-docker logs -f <container-name>
-```
-
-**4.Exec into the Container**
-
-```bash
-docker exec -it <container-name> bash
-```
-
-**5. Run Single Command (without entering)**
-
-```bash
-docker exec <container-name> <command>
-```
-
-**6. Inspect the container**
-
-```bash
-docker inspect <container-name>
+docker run -d -p 80:80 my-website:v1
 ```
 
 ---
