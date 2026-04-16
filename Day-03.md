@@ -164,7 +164,7 @@ docker run -d -p 80:80 my-website:v1
 
 ### ✅ Task 5 : .dockerignore
 
-**A `.dockerignore` file is a configuration file that tells the Docker CLI which files and directories to exclude from the build context—the set of files sent from your local machine to the Docker daemon during the docker build command**
+**A `.dockerignore` file is a configuration file that tells the Docker CLI which files and directories to exclude from the build context—the set of files sent from your local machine to the Docker daemon during the docker build command.**
 
 * `node_modules` : Ignores the entire node_modules folder ,includes all installed packages inside it
 * `.git` : Ignores the Git repository folder
