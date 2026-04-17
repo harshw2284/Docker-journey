@@ -173,6 +173,20 @@ docker run -d -p 80:80 my-website:v1
 
 ---
 
+### ✅ Task 5 : Build Optimization
+
+
+**Why does layer order matter ?**
+
+Docker uses layer caching to speed up builds ,
+Each instruction = one layer
+Docker builds layer by layer, top to bottom
+If one layer changes → all layers after it are rebuilt
+
+**So :**
+* Put stable steps first (install packages, dependencies)
+* Put frequently changing steps last (COPY code)
+
 
 
 
