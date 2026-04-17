@@ -173,21 +173,45 @@ docker run -d -p 80:80 my-website:v1
 
 ---
 
-### ✅ Task 5 : Build Optimization
-
+### ✅ Task 6 : Build Optimization
 
 **Why does layer order matter ?**
 
 Docker uses layer caching to speed up builds ,
-Each instruction = one layer
-Docker builds layer by layer, top to bottom
-If one layer changes → all layers after it are rebuilt
+Each instruction = one layer ,
+Docker builds layer by layer, top to bottom .
+If one layer changes → all layers after it are rebuilt.
 
 **So :**
 * Put stable steps first (install packages, dependencies)
 * Put frequently changing steps last (COPY code)
 
+**Example :**
 
+**Bad Dockerfile :**
 
+```bash
+FROM ubuntu
 
+COPY . .
+RUN apt-get update
+RUN apt-get install -y curl
+```
 
+Here Every time you change code → `COPY . .` changes ,
+So ALL steps after it rebuild.
+
+**Optimized Dockerfile :**
+
+```bash
+FROM ubuntu
+
+RUN apt-get update
+RUN apt-get install -y curl
+
+COPY . .
+```
+Here Code changes only affect last layer ,
+Dependencies stay cached → fast
+
+---
