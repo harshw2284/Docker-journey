@@ -32,6 +32,48 @@ docker stop mysql && docker rm mysql
 
 ### ✅ Task 2: Named Volumes
 
+**1. Create a named volume :**
+
+```bash
+docker create volume myvolume
+```
+
+**2. Attaching volume to a database container**
+
+```bash
+docker run -d --name mysql-db -v myvolume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
+```
+
+**3. Then i added some data, stop and removed the container**
+
+**4. Now running new container with same volume**
+
+```bash
+docker run -d --name mysql-db-new -v myvolume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
+```
+
+**5. Is the data still there ?**
+
+Yes ! our data is still there.
+
+**Because :**
+
+* Named volume (my-db-data) is independent of containers
+* When container dies → volume survives
+* New container mounts same volume → gets same data
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ---
@@ -148,13 +190,11 @@ docker run -d --network my-network -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PA
 docker run -it --network my-network python
 ```
 
-**NOTE : Use Ping: docker exec <container1> ping <container2> to ping containers and check network connectivity between them**
+**4. Verifying the app container can reach the database by container name (Using Ping)**
 
-**4. Verifying the app container can reach the database by container name**
+```bash
+ docker exec pythonc ping mysqlc
+```
 
-
-
-
-
-
+---
 
