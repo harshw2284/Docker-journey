@@ -62,20 +62,6 @@ Yes ! our data is still there.
 * When container dies → volume survives
 * New container mounts same volume → gets same data
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
 
 ### ✅ Task 3: Bind Mounts
@@ -156,11 +142,11 @@ docker network create --driver bridge my-app-net
 
 **2. Then I run 2 containers on `my-app-net`**
 
-**Can they ping each other by name now ?**
+**3. Can they ping each other by name now ?**
 
 YES ! Now they can ping each other by thier name
 
-**Why does custom networking allow name-based communication but the default bridge doesn't?**
+**4. Why does custom networking allow name-based communication but the default bridge doesn't?**
 
 Custom bridge networks include an internal DNS server that resolves container names to IP addresses, enabling name-based communication. The default bridge network lacks this DNS feature, so containers must use IP addresses unless manually linked.
 
