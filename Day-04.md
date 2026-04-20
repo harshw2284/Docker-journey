@@ -135,14 +135,26 @@ docker network create --driver bridge my-network
 
 ```bash
 #Creating a volume
-docker volume create 
+docker volume create mysql-data 
 
-docker network create --driver bridge my-network
+#Running The Container
+docker run -d --network my-network -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
 ```
 
 
-Run an app container (use any image) on the same network
-Verify the app container can reach the database by container name
+**3. Running an app container (pyhton) on the same network :**
+
+```bash
+docker run -it --network my-network python
+```
+
+**NOTE : Use Ping: docker exec <container1> ping <container2> to ping containers and check network connectivity between them**
+
+**4. Verifying the app container can reach the database by container name**
+
+
+
+
 
 
 
