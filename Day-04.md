@@ -157,6 +157,7 @@ docker network create --driver bridge my-app-net
 **2. Then I run 2 containers on `my-app-net`**
 
 **Can they ping each other by name now ?**
+
 YES ! Now they can ping each other by thier name
 
 **Why does custom networking allow name-based communication but the default bridge doesn't?**
