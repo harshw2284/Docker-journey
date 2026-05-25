@@ -11,6 +11,8 @@ docker pull ubuntu
 docker pull alpine
 ```
 
+**Note : The primary difference is that docker pull only downloads an image, while docker run both downloads (if necessary) and starts a container from that image.**
+
 **2. List all images on your machine**
 
 ```bash
