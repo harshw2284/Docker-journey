@@ -2,7 +2,7 @@
 
 ### ✅ Task 1: My First Dockerfile
 
-**1. First I created a docker file named "my-first-image"**
+**1. First I created a directory named "my-first-image"**
 
 **2. Then i create a Dockerfile :**
 * Uses `ubuntu` as the base image
