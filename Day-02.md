@@ -110,6 +110,8 @@ docker start <container-name>
 docker pause <container-name>
 ```
 
+**Note : The main difference between docker stop and docker pause is that stop shuts down the container entirely, while pause freezes it in its current state without shutting it down.**
+
 **4. Unpause the Container**
 
 ```bash
