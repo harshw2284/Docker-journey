@@ -28,7 +28,7 @@ docker build -t my-ubuntu:v1 .
 **5. Running the container from image.**
 
 ```bash
-docker run -itd ubuntu:v1
+docker run -itd <image_id>
 ```
 
 ---
