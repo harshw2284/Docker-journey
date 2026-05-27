@@ -41,7 +41,7 @@ docker create volume myvolume
 **2. Attaching volume to a database container**
 
 ```bash
-docker run -d --name mysql-db -v myvolume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
+docker run -d --name mysql-db `-v myvolume:/var/lib/mysql` -e MYSQL_ROOT_PASSWORD=root mysql:latest
 ```
 
 **3. Then i added some data, stop and removed the container**
