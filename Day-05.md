@@ -58,9 +58,13 @@ docker compose down
 
 ---
 
-### ✅ Task 3: Bind Mounts
+### ✅ Task 3: Two-Container Setup
 
-**1. Created a folder on my host machine with an `index.html` file**
+**1. Write a docker-compose.yml that runs:**
+
+* A WordPress container
+* A MySQL container
+
 
 
 **2. Run an Nginx container and bind mount my folder to the Nginx web directory**
