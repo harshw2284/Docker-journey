@@ -112,63 +112,93 @@ It does NOT restart if container is manually stopped.**
 
 ---
 
-### ✅ Task 4 : Compose Commands
+### ✅ Task 4 : Custom Dockerfiles in Compose
 
-**1. Start services in detached mode**
+**1. Instead of using a pre-built image for your app, use `build:` in your compose file to build from a Dockerfile**
 
-```bash
-docker compose up -d
-```
-
-**2. View running services**
+**Pre-built Image:**
 
 ```bash
-docker compose ps
+image: myflaskapp
 ```
 
-**3. View Logs of All Services**
+**Creating Image using `build:`**
 
 ```bash
-docker compose logs
-docker compose logs -f  (live logs)
+web:
+  build: .
+  container_name: flask_app
 ```
 
-**4. View Logs of Specific Service**
+**Docker Compose will build the image using the local Dockerfile.**
 
-```bash
-docker compose logs <service-name>
-docker compose logs my-sql
-docker compose logs -f mysql-db  (live logs)
-```
 
-**5. Stop services without removing**
-
-```bash
-docker compose stop
-docker compose start  (Restart quickly)
-```
-
-**6. Remove Everything (containers, networks)**
-
-```bash
-docker compose down
-docker compose down -v  (including volumes)
-```
-
-**7. Rebuild Images After Changes**
+**2. Rebuild and restart with one command**
 
 ```bash
 docker compose up --build
-docker compose up -d --build  (detached mode)
 ```
 
+**What it does:**
+
+* Rebuilds app image
+* Recreates containers
+* Starts updated application
+
 ---
 
-### ✅ Task 5 : Environment Variables
+### ✅ Task 5 : Scaling (Bonus)
 
+**1. Try scaling your web app to 3 replicas using docker compose up --scale**
+
+```bash
+docker compose up --scale web=3
+```
+
+**This tells Docker Compose to create 3 replicas of the web service**
+
+
+**2. What happens? What breaks?**
+
+* What Happened :
+
+**Docker tried to create 3 Flask containers, But an error occurred because all replicas attempted to use the same host port:**
+
+```bash
+ports:
+  - "5000:5000"
+```
+
+**Only one container can bind to host port 5000.**
+
+* What Broke :
+
+**Port conflict occurred.**
+
+**Example error:**
+
+**Bind for 0.0.0.0:5000 failed: port is already allocated**
+
+* Reason:
+
+**Multiple containers cannot use the same host port simultaneously.**
+
+
+**3. Write in your notes: Why doesn't simple scaling work with port mapping?**
+
+**Each replica tries to map:**
+
+**host_port:container_port**
+
+**5000:5000**
+
+**Host machine has only one port 5000.**
+
+**So :**
+
+* First container gets port 5000
+* Other replicas fail
 
 ---
 
-**NOTE :**
-* Compose creates a default network for all services automatically
-* Service names in compose are the DNS names containers use to talk to each other
+
