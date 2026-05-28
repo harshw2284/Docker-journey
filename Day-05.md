@@ -60,7 +60,7 @@ docker compose down
 
 ### ✅ Task 3: Two-Container Setup
 
-**1. Write a docker-compose.yml that runs:**
+**1. Write a `docker-compose.yml` that runs:**
 
 * A WordPress container
 * A MySQL container
@@ -75,6 +75,7 @@ docker compose down
 * Start it, access WordPress in your browser, and set it up.
 
 **3. Verify: Stop and restart with docker compose down and docker compose up — is your WordPress data still there?**
+
 **Yes ! Our data is still there.** 
 
 ---
