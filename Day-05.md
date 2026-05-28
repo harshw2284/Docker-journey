@@ -32,10 +32,32 @@ docker compose --version
 
 ```bash
 services:
-  Nginx:
-    image: nginx
+  wordpress:
+    image: wordpress
+    restart: always
     ports:
-      - "80:80"
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: mysql-db:3306
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: wppassword
+      WORDPRESS_DB_NAME: wordpress
+    depends_on:
+      - mysql-db
+  mysql-db:
+    image: mysql:latest
+    container_name: mysql_server
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: wppassword
+    volumes:
+      - mysql-app:/var/lib/mysql
+
+volumes:
+  mysql-app:
 ```
 
 **3. Start it with docker compose up(Inside vs code terminal)**
