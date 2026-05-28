@@ -74,64 +74,60 @@ docker compose down
 * WordPress should connect to MySQL using the service name
 * Start it, access WordPress in your browser, and set it up.
 
-```bash
-docker run -d -v /local/path:/container/path -p 80:80 <image_name>
-docker run -d -v /home/user/data:/app -p 80:80 nginx
-```
-
-**3. Accessing the page in browser**
-
-```bash
-localhost:80
-```
-**4. Edited `index.html` on host.**
-
-* After refreshing the browser I observed that changes in `index.html` file done from host are implemented.
-
-**Difference between a named volume and a bind mount :**
-
-**Named Volume :**
-* Managed by Docker (not visible directly)
-* Data persists even if container is deleted
-* Portable & clean
-* Not easily editable manually
-* No instant file editing like bind mount
-
-**Bind Mount :**
-* Maps your local folder → container
-* Real-time changes (great for development)
-* You can see/edit files directly
-* Depends on your system path
-* Less portable
+**3. Verify: Stop and restart with docker compose down and docker compose up — is your WordPress data still there?**
+**Yes ! Our data is still there.** 
 
 ---
 
-### ✅ Task 4 : Docker Networking Basics
+### ✅ Task 4 : Compose Commands
 
-**1. List all Docker networks on your machine**
-
-```bash
-docker network ls
-```
-
-**2. Inspect the default bridge network**
+**1. Start services in detached mode**
 
 ```bash
-docker network inspect bridge
+docker compose -d
 ```
-**3. I run 2 containers on default bridge**
-* can they ping each other by name :
-  
-NO ! On Docker’s default bridge, containers cannot ping each other by name. (only by IP)
 
-Default bridge has no automatic DNS service , and Containers don’t know each other by name
+**2. View running services**
 
-* can they ping each other by IP :
+```bash
+docker compose ps
+```
 
-YES ! On the default bridge network, containers can ping each other by IP.
-Default bridge allows IP-level communication , Containers are on the same subnet.
+**3. View Logs of All Services**
 
-But no DNS, so names don’t resolve
+```bash
+docker compose logs
+docker compose logs -f  (live logs)
+```
+
+**4. View Logs of Specific Service**
+
+```bash
+docker compose logs <service-name>
+docker compose logs my-sql
+docker compose logs -f mysql-db  (live logs)
+```
+
+**5. Stop services without removing**
+
+```bash
+docker compose stop
+docker compose start  (Restart quickly)
+```
+
+**6. Remove Everything (containers, networks)**
+
+```bash
+docker compose down
+docker compose down -v  (including volumes)
+```
+
+**7. Rebuild Images After Changes**
+
+```bash
+docker compose up --build
+docker compose up -d --build  (detached mode)
+```
 
 ---
 
