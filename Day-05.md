@@ -26,9 +26,9 @@ docker compose --version
 
 ### ✅ Task 2: My First Compose File
 
-**1.I Created a folder named compose-basics**
+**1. I Created a folder named compose-basics**
 
-**2.I write a `docker-compose.yml` in VS code that runs a single Nginx container with port mapping**
+**2. I write a `docker-compose.yml` in VS code that runs a single Nginx container with port mapping**
 
 ```bash
 services:
