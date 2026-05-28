@@ -67,7 +67,12 @@ docker compose down
 
 
 
-**2. Run an Nginx container and bind mount my folder to the Nginx web directory**
+**2. They should:**
+
+* Be on the same network (Compose does this automatically)
+* MySQL should have a named volume for data persistence
+* WordPress should connect to MySQL using the service name
+* Start it, access WordPress in your browser, and set it up.
 
 ```bash
 docker run -d -v /local/path:/container/path -p 80:80 <image_name>
