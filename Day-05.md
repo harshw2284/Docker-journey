@@ -28,7 +28,7 @@ docker compose --version
 
 **1. I Created a folder named compose-basics**
 
-**2. I write a `docker-compose.yml` in VS code that runs a single Nginx container with port mapping**
+**2. I write a `docker-basic-compose.yml` in VS code that runs a single Nginx container with port mapping**
 
 ```bash
 services:
