@@ -132,56 +132,11 @@ docker compose up -d --build  (detached mode)
 
 ---
 
-### ✅ Task 5 : Custom Networks
+### ✅ Task 5 : Environment Variables
 
-**1. I created a custom bridge network called `my-app-net`**
-
-```bash
-docker network create --driver bridge my-app-net
-```
-
-**2. Then I run 2 containers on `my-app-net`**
-
-**3. Can they ping each other by name now ?**
-
-YES ! Now they can ping each other by thier name
-
-**4. Why does custom networking allow name-based communication but the default bridge doesn't?**
-
-Custom bridge networks include an internal DNS server that resolves container names to IP addresses, enabling name-based communication. The default bridge network lacks this DNS feature, so containers must use IP addresses unless manually linked.
 
 ---
 
-### ✅ Task 6 : Put It Together 
-
-**1. Created a custom network**
-
-```bash
-docker network create --driver bridge my-network
-```
-
-**2. Run a database container (MySQL) on that network with a volume for data**
-
-```bash
-#Creating a volume
-docker volume create mysql-data 
-
-#Running The Container
-docker run -d --network my-network -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
-```
-
-
-**3. Running an app container (pyhton) on the same network :**
-
-```bash
-docker run -it --network my-network python
-```
-
-**4. Verifying the app container can reach the database by container name (Using Ping)**
-
-```bash
- docker exec pythonc ping mysqlc
-```
-
----
-
+**NOTE :**
+* Compose creates a default network for all services automatically
+* Service names in compose are the DNS names containers use to talk to each other
