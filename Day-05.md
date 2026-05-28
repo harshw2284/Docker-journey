@@ -24,37 +24,37 @@ docker compose --version
 
 ---
 
-### ✅ Task 2: Named Volumes
+### ✅ Task 2: My First Compose File
 
-**1. Create a named volume :**
+**1.I Created a folder named compose-basics**
 
-```bash
-docker create volume myvolume
-```
-
-**2. Attaching volume to a database container**
+**2.I write a `docker-compose.yml` in VS code that runs a single Nginx container with port mapping**
 
 ```bash
-docker run -d --name mysql-db -v myvolume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
+services:
+  Nginx:
+    image: nginx
+    ports:
+      - "80:80"
 ```
 
-**3. Then i added some data, stop and removed the container**
-
-**4. Now running new container with same volume**
+**3. Start it with docker compose up(Inside vs code terminal)**
 
 ```bash
-docker run -d --name mysql-db-new -v myvolume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
+docker compose up
 ```
 
-**5. Is the data still there ?**
+**4. Accessing it in browser**
 
-Yes ! our data is still there.
+```bash
+localhost:80
+```
 
-**Because :**
+**5. Stop it with docker compose down**
 
-* Named volume (my-db-data) is independent of containers
-* When container dies → volume survives
-* New container mounts same volume → gets same data
+```bash
+docker compose down
+```
 
 ---
 
