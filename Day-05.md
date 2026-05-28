@@ -85,7 +85,7 @@ docker compose down
 **1. Start services in detached mode**
 
 ```bash
-docker compose -d
+docker compose up -d
 ```
 
 **2. View running services**
