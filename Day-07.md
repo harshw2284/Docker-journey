@@ -95,7 +95,7 @@ docker build -t go-image:v2 .
 
 **3. It's size is about 10MB.**
 
-**4. Write in your notes: Why is the multi-stage image so much smaller?**
+**4. Why is the multi-stage image so much smaller?**
 
 A multi-stage build separates the build environment from the runtime environment. The first stage contains compilers, build tools, source code, and dependencies needed to build the application. In the final stage, only the required artifacts (such as the compiled binary or application files) are copied using COPY --from=<stage>. As a result, unnecessary components like compilers, build caches, source code, and development tools are excluded from the final image, significantly reducing its size and improving security and deployment speed.
 
