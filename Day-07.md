@@ -102,56 +102,38 @@ A multi-stage build separates the build environment from the runtime environment
 
 ---
 
-### ✅ Task 3: Restart policies
+### ✅ Task 3: Push to Docker Hub
 
-**1. Add `restart: always` to your database service**
+**1. First created a free account on Docker Hub**
 
-```bash
- mysql:
-    image: mysql:8.0
-    container_name: mysql_server
-    restart: always
-    ports:
-      - "3306:3306"
-```
-
-
-**2. Manually kill the database container — does it come back?**
+**2. Log in from the Terminal**
 
 ```bash
-docker kill mysql_server
+docker login
 ```
 
-**Result:**
-
-**Docker automatically restarted the MySQL container after it was killed.**
-
-**Reason:**
-
-**`restart: always` tells Docker to always keep the container running.**
-
-**3. Try `restart: on-failure` — how is it different?**
+**3. Tag image properly**
 
 ```bash
-mysql:
-    image: mysql:8.0
-    container_name: mysql_server
-    restart: on-failure
+yourusername/image-name:tag
+harsh9301/go-image:v2
 ```
 
-**Container restarts only if it exits with an error/non-zero exit code.
-It does NOT restart if container is manually stopped.**
+**4. Push it to Docker Hub**
 
-**4. Write in your notes: When would you use each restart policy?**
+```bash
+docker push harsh9301/go-image:v2
+```
 
-| Restart Policy | Behavior | Restarts After Crash | Restarts After Manual Stop/Kill | Best Use Case | 
-|---|---|---|---|---|
-| `restart: always` | Container always tries to stay running | ✅ Yes | ✅ Yes | Production databases, backend servers, critical services |
-| `restart: on-failure` | Restarts only when container exits with an error | ✅ Yes | ❌ No | Batch jobs, worker scripts, retryable tasks |
+**5. Pull it on a different machine (or after removing locally)**
+
+```bash
+docker pull harsh9301/go-image:v2
+```
 
 ---
 
-### ✅ Task 4 : Custom Dockerfiles in Compose
+### ✅ Task 4 : Image Best Practices
 
 **1. Instead of using a pre-built image for your app, use `build:` in your compose file to build from a Dockerfile**
 
