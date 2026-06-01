@@ -1,4 +1,4 @@
-# Docker – Day 05 - Multi-Stage Builds & Docker Hub
+# Docker – Day 07 - Multi-Stage Builds & Docker Hub
 
 **Today's goal is to build optimized images and share them with the world.**
 
