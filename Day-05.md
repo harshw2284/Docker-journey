@@ -156,9 +156,37 @@ docker compose up -d --build  (detached mode)
 
 ### ✅ Task 5 : Environment Variables
 
+**1. Add environment variables directly in your `docker-compose.yml`**
+
+```bash
+# docker-compose.yml
+services:
+  myapp:
+    image: alpine:latest
+    # The 'env' command will print all environment variables to the console when the container runs
+    command: env 
+    environment:
+      # 1. Defined directly in the compose file
+      - STATIC_VAR=HelloWorld
+      
+      # 2. Referenced from the .env file
+      - PORT=${APP_PORT}
+      - DB_USER=${DATABASE_USER}
+      - DB_PASS=${DATABASE_PASSWORD}
+```
+
+**2. Create a .env file and reference variables from it in your compose file**
+
+```bash
+APP_PORT=8080
+DATABASE_USER=admin
+DATABASE_PASSWORD=supersecret_password
+```
+
+**3. Verify the variables are being picked up**
+
+```bash
+docker compose config
+```
 
 ---
-
-**NOTE :**
-* Compose creates a default network for all services automatically
-* Service names in compose are the DNS names containers use to talk to each other
