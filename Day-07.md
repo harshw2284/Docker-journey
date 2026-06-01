@@ -132,8 +132,3 @@ docker pull harsh9301/go-image:v2
 ```
 
 ---
-
-### ✅ Task 4 : Image Best Practices
-
-
----
