@@ -1,4 +1,4 @@
-# Docker – Day 05 - Docker Compose: Real-World Multi-Container Apps
+# Docker – Day 06 - Docker Compose: Real-World Multi-Container Apps
 
 **Today's goal is to build more complex, production-like setups with Docker Compose.**
 
