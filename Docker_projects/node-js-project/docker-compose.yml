@@ -2,15 +2,15 @@ services:
   web:
     build: .
     container_name: node-js
-    restart: always
+    restart: unless-stopped
     ports:
       - "3000:3000"
-
     environment:
-      - NODE_ENV=development
-      - PORT=3000 
+      NODE_ENV: development
+      PORT : "3000" 
     depends_on:
-      - db
+      db:
+        condition: service_healthy
       
     command: npm run dev
 
@@ -20,6 +20,8 @@ services:
     restart: unless-stopped
     ports:
       - "27017:27017"
+    env_file:
+      - .env
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
