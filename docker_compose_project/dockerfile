@@ -4,8 +4,11 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt                 #--no-cache-dir: Instructs pip not to store the downloaded package files (.whl or .tar.gz) in a local cache directory.
+                                                                   It also forces pip to download the packages fresh from PyPI instead of using existing cached copies.
 
+                                                                   #-r: Short for --requirement.
+                                                                   This flag tells pip that the following argument is a path to a text file containing a list of packages to install
 COPY . .
 
 EXPOSE 5000
