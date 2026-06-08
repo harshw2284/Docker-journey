@@ -1,0 +1,37 @@
+services:
+  web:
+    build: .
+    container_name: node-js
+    restart: always
+    ports:
+      - "3000:3000"
+
+    environment:
+      - NODE_ENV=development
+      - PORT=3000 
+    depends_on:
+      - db
+      
+    command: npm run dev
+
+  db:
+    image:  mongo:7.0
+    container_name: mongo-db
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    healthcheck:
+      test: ["CMD", "mongosh", "--username", "rootadmin", "--password", "securepassword123", "--authenticationDatabase", "admin", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+   mongo_data:
+
