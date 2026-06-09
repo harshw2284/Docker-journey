@@ -115,8 +115,7 @@ docker login
 **3. Tag image properly**
 
 ```bash
-yourusername/image-name:tag
-harsh9301/go-image:v2
+docker tag go-image:v2 harsh9301/go-image:v2
 ```
 
 **4. Push it to Docker Hub**
@@ -129,6 +128,13 @@ docker push harsh9301/go-image:v2
 
 ```bash
 docker pull harsh9301/go-image:v2
+```
+
+**NOTE : To remove tag**
+
+```bash
+docker rmi <repository_name>:<tag>
+docker rmi harsh9301/go-image:v2
 ```
 
 ---
