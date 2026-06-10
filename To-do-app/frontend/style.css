@@ -1,0 +1,247 @@
+/* ── Reset & base ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0f172a;
+  --surface:   #1e293b;
+  --surface2:  #273548;
+  --border:    #334155;
+  --accent:    #6366f1;
+  --accent-h:  #818cf8;
+  --danger:    #f43f5e;
+  --text:      #f1f5f9;
+  --muted:     #94a3b8;
+  --done:      #475569;
+  --radius:    12px;
+  --font:      -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:      "SF Mono", "Fira Code", ui-monospace, monospace;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 16px 80px;
+}
+
+/* ── App shell ────────────────────────────────── */
+.app {
+  width: 100%;
+  max-width: 560px;
+}
+
+/* ── Header ───────────────────────────────────── */
+.header-inner {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.logo {
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: var(--text);
+}
+
+.dot { color: var(--accent); }
+
+.counter {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* ── Input row ────────────────────────────────── */
+.input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.input {
+  flex: 1;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-family: var(--font);
+  padding: 13px 16px;
+  outline: none;
+  transition: border-color 0.18s;
+}
+
+.input::placeholder { color: var(--muted); }
+.input:focus { border-color: var(--accent); }
+
+.btn-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.18s, transform 0.1s;
+}
+
+.btn-add:hover  { background: var(--accent-h); }
+.btn-add:active { transform: scale(0.95); }
+
+/* ── Filters ──────────────────────────────────── */
+.filters {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.filter {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.filter:hover  { background: var(--surface2); color: var(--text); }
+.filter.active { background: var(--surface2); color: var(--accent); }
+
+/* ── Todo list ────────────────────────────────── */
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Todo item ────────────────────────────────── */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  transition: border-color 0.18s, opacity 0.2s;
+  animation: slideIn 0.2s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.todo-item:hover { border-color: var(--surface2); }
+.todo-item.done  { opacity: 0.55; }
+
+/* Checkbox */
+.check-btn {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.18s, background 0.18s;
+  padding: 0;
+}
+
+.check-btn:hover { border-color: var(--accent); }
+
+.todo-item.done .check-btn {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.check-icon {
+  display: none;
+  stroke: #fff;
+}
+
+.todo-item.done .check-icon { display: block; }
+
+/* Text */
+.todo-text {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--text);
+  word-break: break-word;
+}
+
+.todo-item.done .todo-text {
+  color: var(--done);
+  text-decoration: line-through;
+  text-decoration-color: var(--done);
+}
+
+/* Delete button */
+.del-btn {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s, background 0.15s;
+  padding: 0;
+}
+
+.todo-item:hover .del-btn { opacity: 1; }
+.del-btn:hover { color: var(--danger); background: rgba(244,63,94,0.1); }
+
+/* ── Empty state ──────────────────────────────── */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 48px 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ── Error banner ─────────────────────────────── */
+.error-banner {
+  background: rgba(244,63,94,0.12);
+  border: 1px solid rgba(244,63,94,0.35);
+  color: #fda4af;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  margin-top: 12px;
+}
+
+/* ── Utility ──────────────────────────────────── */
+.hidden { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .todo-item { animation: none; }
+}
