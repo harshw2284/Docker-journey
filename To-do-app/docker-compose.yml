@@ -5,8 +5,6 @@ services:
     restart: unless-stopped
     ports:
       - "3000:80"
-    environment:
-      NODE_ENV: development 
     depends_on:
       backend:
         condition: service_healthy  
@@ -29,6 +27,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
+      start_period: 15s
 
 networks:
   app-network:
