@@ -60,6 +60,7 @@ Quick reference for day-to-day Docker usage.
 |----------|-------------|
 | `docker compose up -d` | Start services in background |
 | `docker compose down` | Stop and remove services |
+| `docker compose down -v` | removes named volumes declared in the Compose file |
 | `docker compose ps` | Show running services |
 | `docker compose logs` | View service logs |
 | `docker compose build` | Build service images |
