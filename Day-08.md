@@ -9,7 +9,7 @@
 | Used to create containers. | Executes the application. |
 
 **Example:**
-- Image = Cake recipe 🍰
+- Image = Cake recipe 
 - Container = Actual cake made from the recipe
 
 ---
@@ -79,7 +79,7 @@ Stops and removes:
 docker compose down -v
 ```
 
-⚠️ Any data stored in volumes will be deleted.
+Any data stored in volumes will be deleted.
 
 ---
 
