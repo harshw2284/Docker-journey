@@ -116,7 +116,7 @@ Only the required files are copied to the final image.
 
 | COPY | ADD |
 |--------|------|
-| Copies files/directories. | Copies files/directories plus extra features. |
+| Copies files/directories. | Copies files/directories plus can download files from remote URLs. |
 | Simple and predictable. | Can extract local tar files automatically. |
 | Preferred in most cases. | Use only when extra features are needed. |
 
