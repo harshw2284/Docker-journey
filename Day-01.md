@@ -27,7 +27,7 @@ we need containers to solve problems like "its not working on my machine".
 
 * Docker Client : The primary interface used to interact with Docker. When you type commands like `docker run`, the client translates them into REST API calls and forwards them to the daemon
 
-* Docker Daemon : The brain (runs in background)
+* Docker Daemon (dockerd) : The brain (runs in background)
 
 Builds images
 Runs containers
