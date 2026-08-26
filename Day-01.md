@@ -25,7 +25,7 @@ we need containers to solve problems like "its not working on my machine".
 
 **3. What is the Docker architecture? (daemon, client, images, containers, registry)**
 
-* Docker Client : The command line (what you use)
+* Docker Client : The primary interface used to interact with Docker. When you type commands like `docker run`, the client translates them into REST API calls and forwards them to the daemon
 
 * Docker Daemon : The brain (runs in background)
 
