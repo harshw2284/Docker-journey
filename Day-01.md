@@ -45,7 +45,7 @@ Used to create containers
 Actual working app
 Created from images
 
-* Registry : Storage for images
+* Registry : Storage for images, a centralized storage repository for sharing container images. Docker Hub is the default public option
 
 Example: Docker Hub
 
