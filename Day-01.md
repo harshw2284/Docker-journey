@@ -21,7 +21,7 @@ we need containers to solve problems like "its not working on my machine".
 | size     | small               | large |
 | speed    | fast                | slow |
 | Os       | shared host os      | full os inside |
-| Use case | apps ,microservices | full sysytem isolation |
+| Use case | apps ,microservices | full system isolation |
 
 **3. What is the Docker architecture? (daemon, client, images, containers, registry)**
 
