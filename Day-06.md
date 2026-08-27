@@ -4,7 +4,7 @@
 
 **Today I will handle real scenarios — app + database + cache, healthchecks, restart policies, and service dependencies.**
 
-
+---
 
 ### ✅ Task 1:  Build Your Own App Stack
 
