@@ -57,7 +57,7 @@ RUN pip install requirements.txt
 
 EXPOSE 80
 
-CMD [ "pyhton" , "app.py" ]
+CMD [ "python" , "app.py" ]
 ```
   
 ---
