@@ -4,6 +4,7 @@
 
 **Multi-stage builds are how real teams ship small, secure images. Docker Hub is how you distribute them.**
 
+---
 
 ### ✅ Task 1: The Problem with Large Images
 
